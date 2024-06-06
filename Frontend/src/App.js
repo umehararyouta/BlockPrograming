@@ -3,15 +3,15 @@ import React, {useEffect,useRef} from 'react';
 import 'blockly/blocks';
 import * as Blockly from 'blockly/core';
 import * as libraryBlocks from 'blockly/blocks';
-import {javascriptGenerator} from 'blockly/javascript';
+import {pythonGenerator} from 'blockly/python';
 import * as En from 'blockly/msg/en';
 import WorkspaceConfig from './Blockly/workspace ';
 
 import AppBar from '@mui/material/AppBar';
-import { Toolbar, Typography,CssBaseline } from '@mui/material';
+import { Toolbar, Typography,CssBaseline, Button } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme';
-import toolboxConfig from './Blockly/toolbox';
+import customblocks from './Blockly/customblock';
 
 Blockly.setLocale(En);
 function App() {
@@ -21,6 +21,7 @@ function App() {
 
   useEffect(() => {  
     if(workspaceRef.current === null){
+      customblocks();
       workspaceRef.current = Blockly.inject(blocklyDivRef.current, WorkspaceConfig);
     }
 },[]);
@@ -41,6 +42,10 @@ function App() {
         </Toolbar>
       </AppBar>
       <div id="blocklyDiv" ref={blocklyDivRef} style={{ height: '480px', width: '600px' }}></div>
+      <Button onClick={() =>{
+        const code = pythonGenerator.workspaceToCode(workspaceRef.current);
+        console.log(code);
+      }}>コード生成</Button>
     </ThemeProvider>
   );
 }
