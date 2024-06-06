@@ -1,52 +1,47 @@
 import './App.css';
-import React, {useEffect} from 'react';
+import React, {useEffect,useRef} from 'react';
 import 'blockly/blocks';
 import * as Blockly from 'blockly/core';
 import * as libraryBlocks from 'blockly/blocks';
 import {javascriptGenerator} from 'blockly/javascript';
 import * as En from 'blockly/msg/en';
+import WorkspaceConfig from './Blockly/workspace ';
+
+import AppBar from '@mui/material/AppBar';
+import { Toolbar, Typography,CssBaseline } from '@mui/material';
+import { ThemeProvider } from '@emotion/react';
+import theme from './theme';
+import toolboxConfig from './Blockly/toolbox';
+
 Blockly.setLocale(En);
 function App() {
+
+    const blocklyDivRef = useRef(null);
+    const workspaceRef = useRef(null);
+
   useEffect(() => {  
-    const toolbox = {
-    "kind": "flyoutToolbox",
-    "contents": [
-      {
-        "kind": "block",
-        "type": "controls_if"
-      },
-      {
-        "kind": "block",
-        "type": "controls_repeat_ext"
-      },
-      {
-        "kind": "block",
-        "type": "logic_compare"
-      },
-      {
-        "kind": "block",
-        "type": "math_number"
-      },
-      {
-        "kind": "block",
-        "type": "math_arithmetic"
-      },
-      {
-        "kind": "block",
-        "type": "text"
-      },
-      {
-        "kind": "block",
-        "type": "text_print"
-      },
-    ]
-  };
-  const workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
+    if(workspaceRef.current === null){
+      workspaceRef.current = Blockly.inject(blocklyDivRef.current, WorkspaceConfig);
+    }
 },[]);
 
   return (
-    <div id="blocklyDiv"style={{ height: '480px', width: '600px' }}></div>
-    
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AppBar position='static'>
+        <Toolbar disableGutters>
+          <Typography variant='h6' sx={{
+            fontFamily:'monospace',
+            marginRight:2,
+            marginLeft:5,
+
+          }}>
+            Block
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <div id="blocklyDiv" ref={blocklyDivRef} style={{ height: '480px', width: '600px' }}></div>
+    </ThemeProvider>
   );
 }
 
