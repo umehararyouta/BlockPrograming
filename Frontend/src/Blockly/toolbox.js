@@ -4,6 +4,14 @@ const toolboxConfig = {
       {
         "kind": "block",
         "type": "if"
+      },
+      {
+        "kind": "block",
+        "type": "string"
+      },
+      {
+        "kind": "block",
+        "type": "print"
       }
     ]}
 
