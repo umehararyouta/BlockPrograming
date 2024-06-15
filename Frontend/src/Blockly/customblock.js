@@ -105,6 +105,52 @@ const customblocks =()=>{
             });
         }
     };
+    Blockly.Blocks['input']={
+      init:function(){
+        this.jsonInit(
+          {
+            "type": "print",
+            "message0": "Print( %1 )",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "Print",
+                "check": [
+                  "Number",
+                  "String"
+                ]
+              }
+            ],
+            "inputsInline": true,
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": 230,
+            "tooltip": "",
+            "helpUrl": ""
+          }
+        );
+      }
+    };
+    Blockly.Blocks['input']={
+      init:function(){
+        this.jsonInit(
+          {
+            "type": "input",
+            "message0": "input() %1",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "NAME"
+              }
+            ],
+            "output": null,
+            "colour": 230,
+            "tooltip": "",
+            "helpUrl": ""
+          }
+        );
+      }
+    };
     pythonGenerator.forBlock['if'] = function(block,generator) {
         var value_if_main = generator.valueToCode(block, 'if_main', Order.ATOMIC);
         var dropdown_if_dropdown = block.getFieldValue('if_dropdown');
@@ -134,6 +180,12 @@ const customblocks =()=>{
       // TODO: Assemble python into code variable.
       var code = `print${value_print}\n`;
       return code;
+    };
+    pythonGenerator.forBlock['input'] = function(block, generator) {
+      var value_name = generator.valueToCode(block, 'NAME', Order.ATOMIC);
+      // TODO: Assemble python into code variable.
+      var code = `input()${value_name}`;
+      return [code,Order.NONE];
     };
       
 }

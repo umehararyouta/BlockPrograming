@@ -11,6 +11,10 @@ const toolboxConfig = {
       },
       {
         "kind": "block",
+        "type": "input"
+      },
+      {
+        "kind": "block",
         "type": "print"
       }
     ]}

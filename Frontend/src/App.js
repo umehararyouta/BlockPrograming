@@ -6,9 +6,10 @@ import {pythonGenerator} from 'blockly/python';
 import * as En from 'blockly/msg/en';
 import WorkspaceConfig from './Blockly/workspace ';
 import AppBar from '@mui/material/AppBar';
-import { Toolbar, Typography,CssBaseline, Button, Container, Grid, Paper, TextField,Box, Stack } from '@mui/material';
+import { Toolbar, Typography,CssBaseline, Button, Container, Grid, Paper, TextField,Box, Stack, Table,TableBody,TableCell,TableRow,TableHead } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 
+import problems from './problems/problems.json';
 import theme from './theme';
 import customblocks from './Blockly/customblock';
 
@@ -28,8 +29,11 @@ function App() {
     const blocklyDivRef = useRef(null);
     const workspaceRef = useRef(null);
     const[pyodide,setPyodide] = useState(null);
-    const[output,setOutput] = useState('');
+    const[output,setOutput] = useState([]);
     const [PythonCode, setPythonCode] = useState('')
+    const [selectedId,setSelectedId] = useState(1);
+    const [inputText,setInputText] = useState('');
+    const [filteredProblems,setFIlteredProblems] = useState([]);
 
   //Blockly workspaceを呼び出し
   useEffect(() => {  
@@ -44,12 +48,21 @@ function App() {
 
     }
   },[]);
+  useEffect(() => {
+    const filteredProblems = problems.filter(problem => problem.id === selectedId);
+    setInputText(filteredProblems.map(problem =>problem.input_output.map(io => io[0])));
+    setFIlteredProblems(filteredProblems)
+    console.log(filteredProblems)
+    console.log(filteredProblems.map(problem =>problem.input_output.map(io => io[0])))
+  },[])
+
+
   //Pyodideの呼び出し
   //pyodideはPythonインタプリタをWeb上で動かせるやつ
   useEffect(()=>{
     const loadPyodide = async() => {
       const pyodide = await window.loadPyodide({
-          indexURL : "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/"
+          indexURL : "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/"
       });
       setPyodide(pyodide)
     };
@@ -60,10 +73,37 @@ function App() {
   const runPythonCode = async (code) => {
     if (pyodide){
       try{
-        let output = await pyodide.runPythonAsync(code);
-        console.log(pyodide.runPython('print(1+2)'));
-        console.log(output);
-        setOutput(output);
+        const total_output =[]
+        for (let i = 0; i < inputText.map(input => input.length); i++){
+          const scripttext = `
+import sys
+import io
+from io import StringIO
+
+_INPUT = """\
+${inputText[0][i]}
+"""
+sys.stdin = io.StringIO(_INPUT)
+
+# 標準出力をリダイレクト
+old_stdout = sys.stdout
+sys.stdout = mystdout = StringIO()
+
+# ユーザーのコードを実行
+${code}
+# 標準出力の内容を取得
+results = mystdout.getvalue()
+
+# 標準出力を元に戻す
+sys.stdout = old_stdout
+results
+`;    
+          console.log(scripttext);  
+          const output = await pyodide.runPythonAsync(scripttext);
+          console.log(output)
+          total_output.push(output)
+          }
+          setOutput(total_output);
         }
       catch(e){
         console.error('pythonerror:',e);
@@ -72,7 +112,6 @@ function App() {
   }
   const runcode = async () => {
     const code = pythonGenerator.workspaceToCode(workspaceRef.current);
-    console.log(code);
     await runPythonCode(code);
   };
 
@@ -85,10 +124,6 @@ function App() {
     a.click();
     URL.revokeObjectURL(url);
   };
-
-
-
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -113,11 +148,32 @@ function App() {
           <Grid item xs={6} md={6}>
             <TextField
             readOnly
-            rows={7}
+            rows={8}
             fullWidth
             multiline
             variant='outlined'
+            value={filteredProblems.map((problems) => problems.question)}
             />
+          </Grid>
+          <Grid item xs={6} md={6}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell align="right">入力される文字</TableCell>
+                  <TableCell align="right">期待する出力</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filteredProblems.map((problem) => (
+                  problem.input_output.map((input_output,index) => (
+                    <TableRow key={`${problem.id}-${index}`}>
+                      <TableCell align="right">{input_output[0]}</TableCell>
+                      <TableCell align="right">{input_output[1]}</TableCell>
+                    </TableRow>
+                  ))
+                ))}
+              </TableBody>
+            </Table>
           </Grid>
         </Grid>
       </Container>
@@ -159,7 +215,7 @@ function App() {
               variant='outlined'
               label='実行結果'
               rows={2}
-              value={output}
+              value={output.join(' ')}
               inputProps={{
                 readOnly: true,
                 style:{
