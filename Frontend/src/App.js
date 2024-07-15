@@ -14,7 +14,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 
-import { BrowserRouter as Router,Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route,Link} from 'react-router-dom';
 
 import ProgramPage from './Routes/ProgramPage';
 import Problems from './Routes/Problems';
@@ -31,6 +31,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Router>
       <AppBar position='static'>
         <Toolbar disableGutters>
           <Typography variant='h6' sx={{
@@ -41,12 +42,11 @@ function App() {
             Block
           </Typography>
           <Box sx={{ flexGrow: 1 ,marginRight:3}} />
-          <Button color="inherit"sx={{marginRight:3}} startIcon={<MenuBookIcon />}>問題一覧</Button>
+          <Button component={Link} to="/problems" color="inherit"sx={{marginRight:3}} startIcon={<MenuBookIcon />}>問題一覧</Button>
           <Button color="inherit"sx={{marginRight:3}} startIcon={<HomeIcon />}>メインメニュー</Button>
           <Button color="inherit"sx={{marginRight:3}} startIcon={<LoginIcon />}>ログイン</Button>
         </Toolbar>
       </AppBar>
-      <Router>
         <Routes>
           <Route path = "/programpage" element={<ProgramPage />}/> 
           <Route path = "/problems" element={<Problems />}/> 
