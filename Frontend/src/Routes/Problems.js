@@ -59,7 +59,7 @@ const initialEdges = [
 
 function Problem() {
     const navigate = useNavigate();
-    const onClick = (event, node) => navigate(`/program?=${node.id}`);
+    const onClick = (event, node) => navigate(`/programpage?=${node.id}`);
     return(
         <div style={{ width: '100vw', height: '93vh' }}>
         <ReactFlow

@@ -32,7 +32,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-      <AppBar position='static'>
+      <AppBar position='fixed'>
         <Toolbar disableGutters>
           <Typography variant='h6' sx={{
             fontFamily: 'monospace',
