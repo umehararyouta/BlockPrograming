@@ -1,4 +1,4 @@
-const toolboxConfig = {
+const tooboxjp = {
     "kind": "categoryToolbox",
     "contents": [
       {
@@ -7,39 +7,39 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "variable"
+            "type": "variablejp"
           },
           {
             "kind": "block",
-            "type": "array"
+            "type": "arrayjp"
           },
           {
             "kind": "block",
-            "type": "dict"
+            "type": "dictjp"
           },
           {
             "kind": "block",
-            "type": "forvariavle"
+            "type": "forvariavlejp"
           },
           {
             "kind": "block",
-            "type": "string"
+            "type": "stringjp"
           },
           {
             "kind": "block",
-            "type": "num"
+            "type": "numjp"
           },
           {
             "kind": "block",
-            "type": "bool"
+            "type": "booljp"
           },
           {
             "kind": "block",
-            "type": "infnum"
+            "type": "infnumjp"
           },
           {
             "kind": "block",
-            "type": "math"
+            "type": "mathjp"
           },
         ]
       },
@@ -49,15 +49,15 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "int"
+            "type": "intjp"
           },
           {
             "kind": "block",
-            "type": "str"
+            "type": "strjp"
           },
           {
             "kind": "block",
-            "type": "float"
+            "type": "floatjp"
           },
         ]
       },
@@ -67,11 +67,11 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "if"
+            "type": "ifjp"
           },
           {
             "kind": "block",
-            "type": "andornot"
+            "type": "andornotjp"
           },
         ]
       },
@@ -81,31 +81,31 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "for"
+            "type": "forjp"
           },
           {
             "kind": "block",
-            "type": "while"
+            "type": "whilejp"
           },
           {
             "kind": "block",
-            "type": "range"
+            "type": "rangejp"
           },
           {
             "kind": "block",
-            "type": "reversed"
+            "type": "reversedjp"
           },
           {
             "kind": "block",
-            "type": "break"
+            "type": "breakjp"
           },
           {
             "kind": "block",
-            "type": "pass"
+            "type": "passjp"
           },
           {
             "kind": "block",
-            "type": "continue"
+            "type": "continuejp"
           },
         ]
       },
@@ -115,15 +115,15 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "input"
+            "type": "inputjp"
           },
           {
             "kind": "block",
-            "type": "print"
+            "type": "printjp"
           },
           {
             "kind": "block",
-            "type": "exit"
+            "type": "exitjp"
           },
         ]
       },
@@ -136,15 +136,15 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "math"
+            "type": "mathjp"
           },
           {
             "kind": "block",
-            "type": "andornot"
+            "type": "andornotjp"
           },
           {
             "kind": "block",
-            "type": "bool"
+            "type": "booljp"
           },
         ]
       },
@@ -154,7 +154,7 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "if"
+            "type": "ifjp"
           },
         ]
       },
@@ -164,23 +164,23 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "for"
+            "type": "forjp"
           },
           {
             "kind": "block",
-            "type": "while"
+            "type": "whilejp"
           },
           {
             "kind": "block",
-            "type": "break"
+            "type": "breakjp"
           },
           {
             "kind": "block",
-            "type": "pass"
+            "type": "passjp"
           },
           {
             "kind": "block",
-            "type": "continue"
+            "type": "continuejp"
           },
         ]
       },
@@ -190,35 +190,35 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "input"
+            "type": "inputjp"
           },
           {
             "kind": "block",
-            "type": "print"
+            "type": "printjp"
           },
           {
             "kind": "block",
-            "type": "exit"
+            "type": "exitjp"
           },
           {
             "kind": "block",
-            "type": "string"
+            "type": "stringjp"
           },
           {
             "kind": "block",
-            "type": "num"
+            "type": "numjp"
           },
           {
             "kind": "block",
-            "type": "bool"
+            "type": "booljp"
           },
           {
             "kind": "block",
-            "type": "range"
+            "type": "rangejp"
           },
           {
             "kind": "block",
-            "type": "reversed"
+            "type": "reversedjp"
           },
         ]
       },
@@ -228,34 +228,34 @@ const toolboxConfig = {
         "contents": [
           {
             "kind": "block",
-            "type": "variable"
+            "type": "variablejp"
           },
           {
             "kind": "block",
-            "type": "array"
+            "type": "arrayjp"
           },
           {
             "kind": "block",
-            "type": "dict"
+            "type": "dictjp"
           },
           {
             "kind": "block",
-            "type": "forvariavle"
+            "type": "forvariavlejp"
           },
           {
             "kind": "block",
-            "type": "string"
+            "type": "stringjp"
           },
           {
             "kind": "block",
-            "type": "num"
+            "type": "numjp"
           },
           {
             "kind": "block",
-            "type": "infnum"
+            "type": "infnumjp"
           },
         ]
       },
-  ]}
-
-export default toolboxConfig;
+  ]
+};
+export default tooboxjp

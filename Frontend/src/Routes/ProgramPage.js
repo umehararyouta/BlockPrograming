@@ -6,7 +6,7 @@ import {pythonGenerator} from 'blockly/python';
 import * as En from 'blockly/msg/en';
 import WorkspaceConfig from '../Blockly/workspace ';
 import AppBar from '@mui/material/AppBar';
-import { Toolbar, Typography,CssBaseline, Button, Container, Grid, Paper, TextField,Box, Stack, Table,TableBody,TableCell,TableRow,TableHead } from '@mui/material';
+import { Toolbar, Typography,CssBaseline, Button, Container, Grid, Paper, TextField,Box, Stack, Table,TableBody,TableCell,TableRow,TableHead, FormControl, InputLabel,NativeSelect } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 
 import problems from '../problems/problems.json';
@@ -19,6 +19,9 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import DownloadIcon from '@mui/icons-material/Download';
+
+import toolboxjp from '../Blockly/toolboxjp';
+import toolboxConfig from '../Blockly/toolbox';
 
 //これがないとバグる
 Blockly.setLocale(En);
@@ -33,7 +36,7 @@ function ProgramPage() {
     const [PythonCode, setPythonCode] = useState('')
     const [selectedId,setSelectedId] = useState(1);
     const [inputText,setInputText] = useState('');
-    const [filteredProblems,setFIlteredProblems] = useState([]);
+    const [filteredProblems,setFIlteredProblems] = useState([])
 
   //Blockly workspaceを呼び出し
   useEffect(() => {  
@@ -69,7 +72,6 @@ function ProgramPage() {
     loadPyodide();
   },[]);
   
-
   const runPythonCode = async (code) => {
     if (pyodide){
       try{
@@ -125,10 +127,20 @@ results
     URL.revokeObjectURL(url);
   };
 
+  const handleChnage = (event) => {
+    const workspace = Blockly.getMainWorkspace();
+    if (event.target.value === "japanese"){
+      workspace.updateToolbox(toolboxjp);
+    }else if (event.target.value === "python"){
+      workspace.updateToolbox(toolboxConfig);
+    }
+    workspace.clear();
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth={'xl'} component={Paper} sx={{margin:'auto',padding:5,marginTop:2}}>
+      <Container maxWidth={'xl'} component={Paper} sx={{margin:'auto',padding:5,marginTop:7}}>
         <Grid container>
           <Grid item xs={6} md={6}>
             <TextField
@@ -168,6 +180,22 @@ results
               <Button color="inherit"sx={{marginRight:1}} startIcon={<PlayArrowIcon/>} onClick={runcode}>実行</Button>
               <Button color="inherit"sx={{marginRight:1}} startIcon={<RestartAltIcon/>}>リセット</Button>
               <Button color="inherit"sx={{marginRight:1}} startIcon={<DownloadIcon/>} onClick={downloadPythonCode}>コードをダウンロード</Button>
+              <FormControl >
+              <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                ブロック表記
+              </InputLabel>
+              <NativeSelect
+                defaultValue={'japanese'}
+                inputProps={{
+                  name: 'Notation',
+                  id: 'uncontrolled-native',
+                }}
+                onChange={handleChnage}
+              >
+                <option value={'japanese'}>日本語</option>
+                <option value={'python'}>Python</option>
+              </NativeSelect>
+            </FormControl>
             </Grid>
           </Grid>
         </Container>

@@ -43,7 +43,7 @@ function App() {
           </Typography>
           <Box sx={{ flexGrow: 1 ,marginRight:3}} />
           <Button component={Link} to="/problems" color="inherit"sx={{marginRight:3}} startIcon={<MenuBookIcon />}>問題一覧</Button>
-          <Button color="inherit"sx={{marginRight:3}} startIcon={<HomeIcon />}>メインメニュー</Button>
+          <Button component={Link} to="/" color="inherit"sx={{marginRight:3}} startIcon={<HomeIcon />}>メインメニュー</Button>
           <Button color="inherit"sx={{marginRight:3}} startIcon={<LoginIcon />}>ログイン</Button>
         </Toolbar>
       </AppBar>

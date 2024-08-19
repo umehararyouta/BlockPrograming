@@ -19,7 +19,7 @@ const initialNode = [
     { id: '12', sourcePosition: 'right', targetPosition: 'left', data: { label: '割り算の便利な使い方' }, position: { x: 1500, y: -100 }, },
     { id: '13', sourcePosition: 'right', targetPosition: 'left', data: { label: '最大と最小' }, position: { x: 1500, y: 0 }, },
     { id: '14', sourcePosition: 'right', targetPosition: 'left', data: { label: '合計と平均' }, position: { x: 1500, y: 100 }, },
-    { id: '15', sourcePosition: 'right', targetPosition: 'left', data: { label: '配列の操作' }, position: { x: 1500, y: -200 }, },
+    { id: '15', sourcePosition: 'right', targetPosition: 'left', data: { label: '配列の操作' }, position: { x: 1750, y: -200 }, },
     { id: '16', sourcePosition: 'right', targetPosition: 'left', data: { label: '条件ループ' }, position: { x: 1500, y: -300 }, },
     { id: '17', sourcePosition: 'right', targetPosition: 'left', data: { label: '複雑な分岐' }, position: { x: 1500, y: 200 }, },
     { id: '18', sourcePosition: 'right', targetPosition: 'left', data: { label: '余りの便利な使い方' }, position: { x: 1750, y: -100 }, },
@@ -54,6 +54,7 @@ const initialEdges = [
     { id: 'e18-21', source: '18', target: '21', animated: true },
     { id: 'e13-21', source: '13', target: '21', animated: true },
     { id: 'e14-21', source: '14', target: '21', animated: true },
+    { id: 'e15-21', source: '15', target: '21', animated: true },
 ];
 
 
@@ -61,7 +62,7 @@ function Problem() {
     const navigate = useNavigate();
     const onClick = (event, node) => navigate(`/programpage?=${node.id}`);
     return(
-        <div style={{ width: '100vw', height: '93vh' }}>
+        <div style={{ width: '100vw', height: '99vh' }}>
         <ReactFlow
         nodes={initialNode}
         edges={initialEdges}

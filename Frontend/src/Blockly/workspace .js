@@ -1,6 +1,7 @@
 import toolboxConfig from "./toolbox";
+import toolboxjp from './toolboxjp';
 const WorkspaceConfig = { 
-	toolbox :toolboxConfig , 
+	toolbox :toolboxjp , 
 	collapse : false, 
 	comments : false, 
 	disable : false, 
