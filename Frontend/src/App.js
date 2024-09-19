@@ -19,6 +19,7 @@ import { BrowserRouter as Router,Routes, Route,Link} from 'react-router-dom';
 import ProgramPage from './Routes/ProgramPage';
 import Problems from './Routes/Problems';
 import Home from './Routes/Home';
+import Education from './Routes/Education';
 
 
 
@@ -50,6 +51,7 @@ function App() {
         <Routes>
           <Route path = "/programpage" element={<ProgramPage />}/> 
           <Route path = "/problems" element={<Problems />}/> 
+          <Route path = "/education" element={<Education />}/> 
           <Route path = "/" element={<Home />}/> 
         </Routes>
       </Router>
