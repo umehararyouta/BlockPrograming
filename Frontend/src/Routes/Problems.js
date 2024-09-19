@@ -8,8 +8,8 @@ const initialNode = [
     { id: '1', sourcePosition: 'right', type: 'input', data: { label: '初めに' }, position: { x: 0, y: 0 }, },
     { id: '2', sourcePosition: 'right', targetPosition: 'left', data: { label: 'Pythonについて' }, position: { x: 250, y: 0 }, },
     { id: '3', sourcePosition: 'right', targetPosition: 'left', data: { label: '標準入力とプリント文' }, position: { x: 500, y: 0 }, },
-    { id: '4', sourcePosition: 'right', targetPosition: 'left', data: { label: 'コメント' }, position: { x: 500, y: 100 }, },
-    { id: '5', sourcePosition: 'right', targetPosition: 'left', data: { label: 'インデントによる構文' }, position: { x: 500, y: -100 }, },
+    { id: '4', targetPosition: 'left', type:'output', data: { label: 'コメント' }, position: { x: 500, y: 100 }, },
+    { id: '5', targetPosition: 'left', type:'output', data: { label: 'インデントによる構文' }, position: { x: 500, y: -100 }, },
     { id: '6', sourcePosition: 'right', targetPosition: 'left', data: { label: 'データ型' }, position: { x: 750, y: 0 }, },
     { id: '7', sourcePosition: 'right', targetPosition: 'left', data: { label: '変数と代入' }, position: { x: 1000, y: 0 }, },
     { id: '8', sourcePosition: 'right', targetPosition: 'left', data: { label: '算術演算子' }, position: { x: 1250, y: 0 }, },
@@ -25,7 +25,7 @@ const initialNode = [
     { id: '18', sourcePosition: 'right', targetPosition: 'left', data: { label: '余りの便利な使い方' }, position: { x: 1750, y: -100 }, },
     { id: '19', sourcePosition: 'right', targetPosition: 'left', data: { label: '配列とループ' }, position: { x: 1750, y: -300 }, },
     { id: '20', sourcePosition: 'right', targetPosition: 'left', data: { label: 'ネストと条件演算子' }, position: { x: 1750, y: 200 }, },
-    { id: '21', sourcePosition: 'right', targetPosition: 'left', data: { label: '配列の探索' }, position: { x: 2000, y: 0 }, },
+    { id: '21', targetPosition: 'left', type:'output', data: { label: '配列の探索' }, position: { x: 2000, y: 0 }, },
 
 ];
 
