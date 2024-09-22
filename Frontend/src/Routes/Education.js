@@ -13,14 +13,20 @@ function Education() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const image = {
+      // '1':['./img/',''],
+      '1':['/img/1/1.jpg','/img/1/2.jpg','/img/1/3.jpg','/img/1/4.jpg'],
+
+    }
+    const images = image[queryid] || [];
+
     useEffect(() =>{
       const query = new URLSearchParams(location.search);
       const id = query.get('id');
-      console.log(id)
       if (id) {
         setQueryid(id);
       }
-    })
+    }, [location])
     const onClickFab=()=> navigate(`/programpage?id=${queryid}`)
     return (
       <Container sx={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}>
@@ -30,12 +36,13 @@ function Education() {
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        style={{ textAlign: "center" }}
+        style={{ textAlign: "center"}}
         >
-          <SwiperSlide><img src="http://placehold.jp/700x400.png?text=1" alt=""/></SwiperSlide>
-          <SwiperSlide><img src="http://placehold.jp/700x400.png?text=2" alt=""/></SwiperSlide>
-          <SwiperSlide><img src="http://placehold.jp/700x400.png?text=3" alt=""/></SwiperSlide>
-          <SwiperSlide><img src="http://placehold.jp/700x400.png?text=4" alt=""/></SwiperSlide>
+          {images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img src={image} alt={`Slide ${index+1}`} style={{ width: "100%", height: "auto", maxWidth: "960px", maxHeight: "540px" }}/>
+            </SwiperSlide>
+        ))}
         </Swiper>
         <Fab
         color="primary"
