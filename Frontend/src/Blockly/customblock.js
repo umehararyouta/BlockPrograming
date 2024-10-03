@@ -91,23 +91,17 @@ Blockly.Blocks['input']={
     this.jsonInit(
       {
         "type": "input",
-        "message0": "input( %1 )",
+        "tooltip": "",
+        "helpUrl": "",
+        "message0": "Input() %1",
         "args0": [
           {
-            "type": "input_value",
-            "name": "input",
-            "check": [
-              "Number",
-              "String"
-            ]
+            "type": "input_dummy",
+            "name": "input"
           }
         ],
-        "inputsInline": true,
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": 230,
-        "tooltip": "",
-        "helpUrl": ""
+        "output": null,
+        "colour": 225
       }
     );
   }
@@ -741,8 +735,8 @@ Blockly.Blocks['while']={
   };
   pythonGenerator.forBlock['input'] = function(block, generator) {
     var value_name = generator.valueToCode(block, 'input', Order.ATOMIC);
-    var code = `input()${value_name}\n`;
-    return code;
+    var code = `input()${value_name}`;
+    return [code, Order.ATOMIC];
   };
   pythonGenerator.forBlock['num'] = function(block, generator) {
     const number_name = block.getFieldValue('NAME');
@@ -759,7 +753,7 @@ Blockly.Blocks['while']={
     };
     const operator = operatorMap[dropdown_tf];
     const code = `${operator}${value_bool}`;
-    return [code, Order.NONE];
+    return [code, Order.ATOMIC];
   }  
   pythonGenerator.forBlock['math'] = function(block,generator) {
     const dropdown_name = block.getFieldValue('NAME');
@@ -979,24 +973,18 @@ Blockly.Blocks['while']={
       this.jsonInit(
         {
           "type": "inputjp",
-          "message0": "入力を取得する( %1 )",
+          "tooltip": "",
+          "helpUrl": "",
+          "message0": "入力を取得する %1",
           "args0": [
             {
-              "type": "input_value",
-              "name": "input",
-              "check": [
-                "Number",
-                "String"
-              ]
+              "type": "input_dummy",
+              "name": "input"
             }
           ],
-          "inputsInline": true,
-          "previousStatement": null,
-          "nextStatement": null,
-          "colour": 230,
-          "tooltip": "",
-          "helpUrl": ""
-        }
+          "output": null,
+          "colour": 225
+        }                   
       );
     }
   };
@@ -1630,8 +1618,8 @@ Blockly.Blocks['while']={
   };
   pythonGenerator.forBlock['inputjp'] = function(block, generator) {
   var value_name = generator.valueToCode(block, 'input', Order.ATOMIC);
-  var code = `input()${value_name}\n`;
-  return code;
+  var code = `input()${value_name}`;
+  return [code, Order.ATOMIC];
   };
   pythonGenerator.forBlock['numjp'] = function(block, generator) {
   const number_name = block.getFieldValue('NAME');
@@ -1648,7 +1636,7 @@ Blockly.Blocks['while']={
   };
   const operator = operatorMap[dropdown_tf];
   const code = `${operator}${value_bool}`;
-  return [code, Order.NONE];
+  return [code, Order.ATOMIC];
   }  
   pythonGenerator.forBlock['mathjp'] = function(block,generator) {
   const dropdown_name = block.getFieldValue('NAME');
