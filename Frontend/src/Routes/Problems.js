@@ -1,11 +1,12 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import {ReactFlow,Controls, Background} from "@xyflow/react"
+import {ReactFlow,Controls, Background, useNodesState} from "@xyflow/react"
 import ProgramPage from "./ProgramPage";
 import '@xyflow/react/dist/style.css';
+import { green } from "@mui/material/colors";
 
 const initialNode = [
-    { id: '1', sourcePosition: 'right', type: 'input', data: { label: '初めに' }, position: { x: 0, y: 0 }, },
+    { id: '1', sourcePosition: 'right', type: 'input', data: { label: '初めに' }, position: { x: 0, y: 0 },},
     { id: '2', sourcePosition: 'right', targetPosition: 'left', data: { label: 'Pythonについて' }, position: { x: 250, y: 0 }, },
     { id: '3', sourcePosition: 'right', targetPosition: 'left', data: { label: '標準入力とプリント文' }, position: { x: 500, y: 0 }, },
     { id: '4', targetPosition: 'left', type:'output', data: { label: 'コメント' }, position: { x: 500, y: 100 }, },
@@ -60,11 +61,35 @@ const initialEdges = [
 
 function Problem() {
     const navigate = useNavigate();
-    const onClick = (event, node) => navigate(`/education?id=${node.id}`);
+    const onClick = (event, node) => {
+        window.open(`/education?id=${node.id}`,'_blank');
+        navigate(`/programPage`)
+    }
+    const [nodes,setNodes] = useNodesState(initialNode);
+    
+    // useEffect(() => {
+    //     setNodes((nds) =>
+    //       nds.map((node) => {
+    //         if (node.id === '1') {
+    //           // it's important that you create a new node object
+    //           // in order to notify react flow about the change
+    //           return {
+    //             ...node,
+    //             style: {
+    //               ...node.style,
+    //               backgroundColor: '#CCFFCC',
+    //             },
+    //             hidden: false,
+    //           };
+    //         }
+    //         return node;
+    //       }),
+    //     );
+    //   },[]);
     return(
         <div style={{ width: '100vw', height: '99vh' }}>
         <ReactFlow
-        nodes={initialNode}
+         nodes={nodes}
         edges={initialEdges}
         nodesDraggable={false}
         nodesConnectable={false}

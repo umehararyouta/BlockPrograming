@@ -15,12 +15,6 @@ const WorkspaceConfig = {
 	scrollbars : true, 
 	sounds : true, 
 	oneBasedIndex : true, 
-	grid : {
-		spacing : 20, 
-		length : 1, 
-		colour : '#888', 
-		snap : false
-	}, 
 	zoom : {
 		controls : true, 
 		wheel : true, 

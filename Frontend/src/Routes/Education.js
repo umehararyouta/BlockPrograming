@@ -15,7 +15,8 @@ function Education() {
 
     const image = {
       // '1':['./img/',''],
-      '1':['/img/1/1.jpg','/img/1/2.jpg','/img/1/3.jpg','/img/1/4.jpg'],
+      '1':['/img/1/1.jpg','/img/1/2.jpg','/img/1/3.jpg','/img/1/4.jpg','/img/1/5.jpg','/img/1/6.jpg','/img/1/7.jpg'],
+      '2':['/img/2/1.jpg','/img/2/2.jpg','/img/2/3.jpg','/img/2/4.jpg','/img/2/5.jpg','/img/2/6.jpg','/img/2/7.jpg'],
 
     }
     const images = image[queryid] || [];
@@ -27,7 +28,8 @@ function Education() {
         setQueryid(id);
       }
     }, [location])
-    const onClickFab=()=> navigate(`/programpage?id=${queryid}`)
+    const onClickFab=()=>{
+    navigate(`/education?id=${Number(queryid)+1}`)}
     return (
       <Container sx={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}>
         <Swiper
@@ -51,7 +53,7 @@ function Education() {
         onClick={onClickFab}
         style={{position: 'fixed',bottom: 20,right: 20,}}
         >
-        問題を解いてみる
+        次の資料を見る
         </Fab>
       </Container>
     )
