@@ -4,6 +4,7 @@ import {ReactFlow,Controls, Background, useNodesState} from "@xyflow/react"
 import ProgramPage from "./ProgramPage";
 import '@xyflow/react/dist/style.css';
 import { green } from "@mui/material/colors";
+import axios from 'axios';
 
 const initialNode = [
     { id: '1', sourcePosition: 'right', type: 'input', data: { label: '初めに' }, position: { x: 0, y: 0 },},
@@ -66,26 +67,42 @@ function Problem() {
         navigate(`/programPage`)
     }
     const [nodes,setNodes] = useNodesState(initialNode);
-    
-    // useEffect(() => {
-    //     setNodes((nds) =>
-    //       nds.map((node) => {
-    //         if (node.id === '1') {
-    //           // it's important that you create a new node object
-    //           // in order to notify react flow about the change
-    //           return {
-    //             ...node,
-    //             style: {
-    //               ...node.style,
-    //               backgroundColor: '#CCFFCC',
-    //             },
-    //             hidden: false,
-    //           };
-    //         }
-    //         return node;
-    //       }),
-    //     );
-    //   },[]);
+    // サーバーから進捗管理bitを受け取って、クリア済みのものを緑に
+    useEffect(()=>{
+        const showprogress=async()=>{
+        try{
+            const token = localStorage.getItem('token')
+            console.log('start get progress');
+            const response = await axios.get('http://127.0.0.1:5000/getprogress', { headers: { Authorization: `Bearer ${token}` } ,timeout: 5000});
+            console.log('get progress done',response);
+            for (let i=0;i<21 ; i++){
+                if(response.data.progress &(1<<i)){
+                    setNodes((nds) =>
+                        nds.map((node) => {
+                          if (node.id === (i+1).toString()) {
+                            return {
+                              ...node,
+                              style: {
+                                ...node.style,
+                                backgroundColor: '#CCFFCC',
+                              },
+                              hidden: false,
+                            };
+                          }
+                          return node;
+                        }),
+                      );
+                }
+            }
+            
+        }catch(err){
+            console.log('error',err)
+        }
+    }
+        showprogress()
+    },[])
+
+
     return(
         <div style={{ width: '100vw', height: '99vh' }}>
         <ReactFlow

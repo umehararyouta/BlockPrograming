@@ -85,4 +85,4 @@ function Login(){
         </Grid>
     )
 }
-export default Login
+export default Login;

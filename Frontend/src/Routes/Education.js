@@ -7,9 +7,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination'; 
 import { Navigation, Pagination } from "swiper/modules";
 import { Container, Fab } from '@mui/material';
+import axios from 'axios';
 
 function Education() {
     const [queryid,setQueryid] = useState(null);
+    const [activeindex,setActiveindex] = useState(0);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -28,8 +30,27 @@ function Education() {
         setQueryid(id);
       }
     }, [location])
-    const onClickFab=()=>{
-    navigate(`/education?id=${Number(queryid)+1}`)}
+
+    const onClickFab=async()=>{
+      try{
+      const token = localStorage.getItem('token')
+      console.log('start get progress')
+      const res = await axios.get('http://127.0.0.1:5000/getprogress',{headers: { Authorization: `Bearer ${token}`}})
+      console.log('get progress done',res.data)
+      const bitProgress = res.data.progress |(1<<queryid-1);
+      console.log('start save progress')
+      const ress = await axios.post('http://127.0.0.1:5000/saveprogress',{ progress: bitProgress },{headers: { Authorization: `Bearer ${token}`}})
+      console.log('saveprogess done',bitProgress,ress.data)
+      }catch(error){
+        console.log(error);
+      }
+      navigate(`/education?id=${Number(queryid)+1}`)
+    }
+
+    const onSlideChange = (swiper) => {
+      setActiveindex(swiper.activeIndex);
+      console.log(swiper.activeIndex)
+    }
     return (
       <Container sx={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}>
         <Swiper
@@ -39,6 +60,7 @@ function Education() {
         navigation
         pagination={{ clickable: true }}
         style={{ textAlign: "center"}}
+        onSlideChange={onSlideChange}
         >
           {images.map((image, index) => (
             <SwiperSlide key={index}>
@@ -52,6 +74,8 @@ function Education() {
         variant='extended'
         onClick={onClickFab}
         style={{position: 'fixed',bottom: 20,right: 20,}}
+        // disabled={images.map(((image,index)=>index.length -1 !== activeindex))}
+        disabled={activeindex !== images.length - 1}
         >
         次の資料を見る
         </Fab>
