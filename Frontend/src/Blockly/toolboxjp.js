@@ -62,6 +62,36 @@ const tooboxjp = {
         ]
       },
       {
+        "kind": "category",
+        "name":"配列操作",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "usearrayjp"
+          },
+          {
+            "kind": "block",
+            "type": "appendjp"
+          },
+          {
+            "kind": "block",
+            "type": "removejp"
+          },
+          {
+            "kind": "block",
+            "type": "popjp"
+          },
+          {
+            "kind": "block",
+            "type": "clearjp"
+          },
+          {
+            "kind": "block",
+            "type": "almighty"
+          }
+        ]
+      },
+      {
         "kind":"category",
         "name":"条件分岐",
         "contents": [
@@ -71,8 +101,17 @@ const tooboxjp = {
           },
           {
             "kind": "block",
+            "type": "elifjp"
+          },
+          {
+            "kind": "block",
+            "type": "elsejp"
+          },
+          {
+            "kind": "block",
             "type": "andornotjp"
           },
+          
         ]
       },
       {
@@ -124,6 +163,34 @@ const tooboxjp = {
           {
             "kind": "block",
             "type": "exitjp"
+          },
+          {
+            "kind": "block",
+            "type": "sumjp"
+          },          
+          {
+            "kind": "block",
+            "type": "maxjp"
+          },          
+          {
+            "kind": "block",
+            "type": "minjp"
+          },
+          {
+            "kind": "block",
+            "type": "sortedjp"
+          },
+          {
+            "kind": "block",
+            "type": "defjp"
+          },
+          {
+            "kind": "block",
+            "type": "returnjp"
+          },
+          {
+            "kind": "block",
+            "type": "usedefjp"
           },
         ]
       },
@@ -220,6 +287,34 @@ const tooboxjp = {
             "kind": "block",
             "type": "reversedjp"
           },
+          {
+            "kind": "block",
+            "type": "sumjp"
+          },          
+          {
+            "kind": "block",
+            "type": "maxjp"
+          },          
+          {
+            "kind": "block",
+            "type": "minjp"
+          },
+          {
+            "kind": "block",
+            "type": "sortedjp"
+          },
+          {
+            "kind": "block",
+            "type": "defjp"
+          },
+          {
+            "kind": "block",
+            "type": "returnjp"
+          },
+          {
+            "kind": "block",
+            "type": "usedefjp"
+          },
         ]
       },
       {
@@ -253,6 +348,46 @@ const tooboxjp = {
           {
             "kind": "block",
             "type": "infnumjp"
+          },
+          {
+            "kind": "block",
+            "type": "usearrayjp"
+          },
+        ]
+      },
+      {
+        "kind": "category",
+        "name":"メソッド",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "appendjp"
+          },
+          {
+            "kind": "block",
+            "type": "removejp"
+          },
+          {
+            "kind": "block",
+            "type": "popjp"
+          },
+          {
+            "kind": "block",
+            "type": "clearjp"
+          }
+        ]
+      },
+      {
+        "kind":"category",
+        "name":"その他",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "almighty"
+          },
+          {
+            "kind": "block",
+            "type": "usearray"
           },
         ]
       },

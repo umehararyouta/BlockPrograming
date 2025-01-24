@@ -60,7 +60,192 @@ Blockly.Blocks['if']={
         });
     }
 };
-
+Blockly.Blocks['elif']={
+  init:function(){
+      this.jsonInit(
+        {
+          "type": "elif",
+          "tooltip": "",
+          "helpUrl": "",
+          "message0": "elif %1 %2 %3 %4 %5",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "A"
+            },
+            {
+              "type": "field_dropdown",
+              "name": "drop",
+              "options": [
+                [
+                  "==",
+                  "equal"
+                ],
+                [
+                  "!=",
+                  "not_equal"
+                ],
+                [
+                  ">",
+                  "less_then"
+                ],
+                [
+                  "<",
+                  "more_than"
+                ],
+                [
+                  ">=",
+                  "below"
+                ],
+                [
+                  "<=",
+                  "avobe"
+                ]
+              ]
+            },
+            {
+              "type": "input_value",
+              "name": "B"
+            },
+            {
+              "type": "input_dummy",
+              "name": "C"
+            },
+            {
+              "type": "input_statement",
+              "name": "D"
+            }
+          ],
+          "previousStatement": null,
+          "nextStatement": null,
+          "colour": 330,
+          "inputsInline": true
+        }
+        );
+    }
+};
+Blockly.Blocks['else']={
+  init:function(){
+      this.jsonInit(
+        {
+          "type": "else",
+          "tooltip": "",
+          "helpUrl": "",
+          "message0": "else %1 %2",
+          "args0": [
+            {
+              "type": "input_dummy",
+              "name": "A"
+            },
+            {
+              "type": "input_statement",
+              "name": "B"
+            }
+          ],
+          "previousStatement": null,
+          "nextStatement": null,
+          "colour": 330
+        }
+                            
+        );
+    }
+};
+Blockly.Blocks['sum']={
+  init:function(){
+      this.jsonInit(
+        {
+          "type": "sum",
+          "tooltip": "",
+          "helpUrl": "",
+          "message0": "sum( %1 ) %2",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "A"
+            },
+            {
+              "type": "input_dummy",
+              "name": "B"
+            }
+          ],
+          "output": null,
+          "colour": 225
+        }      
+      );
+    }
+};
+Blockly.Blocks['max']={
+  init:function(){
+      this.jsonInit(
+        {
+          "type": "max",
+          "tooltip": "",
+          "helpUrl": "",
+          "message0": "max( %1 ) %2",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "A"
+            },
+            {
+              "type": "input_dummy",
+              "name": "B"
+            }
+          ],
+          "output": null,
+          "colour": 225
+        } 
+      );
+    }
+};
+Blockly.Blocks['min']={
+  init:function(){
+      this.jsonInit(
+        {
+          "type": "min",
+          "tooltip": "",
+          "helpUrl": "",
+          "message0": "min( %1 ) %2",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "A"
+            },
+            {
+              "type": "input_dummy",
+              "name": "B"
+            }
+          ],
+          "output": null,
+          "colour": 225
+        }   
+      );
+    }
+};
+Blockly.Blocks['sorted']={
+  init:function(){
+      this.jsonInit(
+        {
+          "type": "sorted",
+          "tooltip": "",
+          "helpUrl": "",
+          "message0": "sorted( %1 ) %2",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "A"
+            },
+            {
+              "type": "input_dummy",
+              "name": "B"
+            }
+          ],
+          "output": null,
+          "colour": 225
+        }   
+      );
+    }
+};
 Blockly.Blocks['print']={
   init:function(){
       this.jsonInit(
@@ -250,19 +435,22 @@ Blockly.Blocks['string']={
   init:function(){
       this.jsonInit({
         "type": "string",
-        "message0": "\" %1 \"",
+        "tooltip": "",
+        "helpUrl": "",
+        "message0": "\" %1 \" %2",
         "args0": [
           {
             "type": "field_input",
             "name": "String_Text",
-            "text": ""
+            "text": " "
+          },
+          {
+            "type": "input_value",
+            "name": "A"
           }
         ],
-        "inputsInline": true,
-        "output": "String",
-        "colour": 230,
-        "tooltip": "",
-        "helpUrl": ""
+        "output": null,
+        "colour": 225
       });
     }
 };
@@ -391,10 +579,9 @@ Blockly.Blocks['int']={
             "name": "b"
           }
         ],
-        "previousStatement": null,
-        "nextStatement": null,
+        "output": null,
         "colour": 225
-      }
+      }                     
     );
   }
 };
@@ -683,7 +870,7 @@ Blockly.Blocks['while']={
         "type": "while",
         "tooltip": "",
         "helpUrl": "",
-        "message0": "%1 %2 %3",
+        "message0": "%1 %2 %3 %4 %5",
         "args0": [
           {
             "type": "field_label_serializable",
@@ -695,39 +882,1119 @@ Blockly.Blocks['while']={
             "name": "A"
           },
           {
+            "type": "field_dropdown",
+            "name": "drop",
+            "options": [
+              [
+                "==",
+                "OPTIONNAME"
+              ],
+              [
+                "!=",
+                "not_equal"
+              ],
+              [
+                ">",
+                "less_then"
+              ],
+              [
+                "<",
+                "more_than"
+              ],
+              [
+                ">=",
+                "below"
+              ],
+              [
+                "<=",
+                "avobe"
+              ]
+              [
+                "True",
+                "True"
+              ]
+            ]
+          },
+          {
+            "type": "input_value",
+            "name": "B"
+          },
+          {
             "type": "input_statement",
-            "name": "NAME"
+            "name": "C"
           }
         ],
         "previousStatement": null,
         "nextStatement": null,
         "colour": 225,
         "inputsInline": true
-        }      
+      }  
       );
     }
   };
-
-
-  pythonGenerator.forBlock['if'] = function(block,generator) {
-      var value_if_main = generator.valueToCode(block, 'if_main', Order.ATOMIC);
-      var dropdown_if_dropdown = block.getFieldValue('if_dropdown');
-      var value_name = generator.valueToCode(block, 'NAME', Order.ATOMIC);
-      var statements_if_statement = generator.statementToCode(block, 'if_statement');
-      var operatorMap = {
-          'equal': '==',
-          'not_equal': '!=',
-          'less_then': '>',
-          'more_than': '<',
-          'below': '>=',
-          'avobe': '<='
-      };
-      var operator = operatorMap[dropdown_if_dropdown];
-      var code = `if ${value_if_main} ${operator} ${value_name}:\n${statements_if_statement}`;
-      return code;
+  Blockly.Blocks['sumjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "sumjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "合計( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "colour": 225
+          }      
+        );
+      }
+  };
+  Blockly.Blocks['maxjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "maxjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "最大( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "colour": 225
+          } 
+        );
+      }
+  };
+  Blockly.Blocks['minjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "minjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "最小( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "colour": 225
+          }   
+        );
+      }
+  };
+Blockly.Blocks['def']={
+  init:function(){
+      this.jsonInit(
+        {
+          "type": "def",
+          "tooltip": "",
+          "helpUrl": "",
+          "message0": "def %1 ( %2 ): %3 %4",
+          "args0": [
+            {
+              "type": "field_input",
+              "name": "NAME",
+              "text": ""
+            },
+            {
+              "type": "input_value",
+              "name": "A"
+            },
+            {
+              "type": "input_dummy",
+              "name": "NAME"
+            },
+            {
+              "type": "input_statement",
+              "name": "B"
+            }
+          ],
+          "previousStatement": null,
+          "nextStatement": null,
+          "colour": 225
+        }
+                                     
+      );
+    }
+  };
+  Blockly.Blocks['return']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "return",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "return %1 %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": 225
+          }
+                              
+        );
+      }
     };
+  Blockly.Blocks['usedef']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "usedef",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "%1 ( %2 ) %3",
+            "args0": [
+              {
+                "type": "field_input",
+                "name": "name",
+                "text": ""
+              },
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+                                                
+        );
+      }
+    };
+  Blockly.Blocks['usearray']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "usearray",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "%1 [ %2 ] %3",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_value",
+                "name": "B"
+              },
+              {
+                "type": "input_value",
+                "name": "C"
+              }
+            ],
+            "output": null,
+            "colour": 225,
+            "inputsInline": true
+          }                                  
+        );
+      }
+    };
+  Blockly.Blocks['append']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "append",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".append( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+                              
+        );
+      }
+    };
+  Blockly.Blocks['remove']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "remove",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".remove( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['pop']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "pop",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".pop( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['clear']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "clear",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".clear( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+      Blockly.Blocks['append']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "append",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".append( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+                              
+        );
+      }
+    };
+  Blockly.Blocks['remove']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "remove",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".remove( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['pop']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "pop",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".pop( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['clear']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "clear",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".clear( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+      Blockly.Blocks['append']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "append",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".append( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+                              
+        );
+      }
+    };
+  Blockly.Blocks['remove']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "remove",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".remove( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['pop']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "pop",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".pop( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['clear']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "clear",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".clear( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };  Blockly.Blocks['append']={
+      init:function(){
+          this.jsonInit(
+            {
+              "type": "append",
+              "tooltip": "",
+              "helpUrl": "",
+              "message0": ".append( %1 ) %2",
+              "args0": [
+                {
+                  "type": "input_value",
+                  "name": "A"
+                },
+                {
+                  "type": "input_dummy",
+                  "name": "B"
+                }
+              ],
+              "output": null,
+              "colour": 225
+            }
+                                
+          );
+        }
+      };
+    Blockly.Blocks['remove']={
+      init:function(){
+          this.jsonInit(
+            {
+              "type": "remove",
+              "tooltip": "",
+              "helpUrl": "",
+              "message0": ".remove( %1 ) %2",
+              "args0": [
+                {
+                  "type": "input_value",
+                  "name": "A"
+                },
+                {
+                  "type": "input_dummy",
+                  "name": "B"
+                }
+              ],
+              "output": null,
+              "colour": 225
+            }
+          );
+        }
+      };
+    Blockly.Blocks['pop']={
+      init:function(){
+          this.jsonInit(
+            {
+              "type": "pop",
+              "tooltip": "",
+              "helpUrl": "",
+              "message0": ".pop( %1 ) %2",
+              "args0": [
+                {
+                  "type": "input_value",
+                  "name": "A"
+                },
+                {
+                  "type": "input_dummy",
+                  "name": "B"
+                }
+              ],
+              "output": null,
+              "colour": 225
+            }
+          );
+        }
+      };
+    Blockly.Blocks['clear']={
+      init:function(){
+          this.jsonInit(
+            {
+              "type": "clear",
+              "tooltip": "",
+              "helpUrl": "",
+              "message0": ".clear( %1 ) %2",
+              "args0": [
+                {
+                  "type": "input_value",
+                  "name": "A"
+                },
+                {
+                  "type": "input_dummy",
+                  "name": "B"
+                }
+              ],
+              "output": null,
+              "colour": 225
+            }
+          );
+        }
+      };  Blockly.Blocks['append']={
+        init:function(){
+            this.jsonInit(
+              {
+                "type": "append",
+                "tooltip": "",
+                "helpUrl": "",
+                "message0": ".append( %1 ) %2",
+                "args0": [
+                  {
+                    "type": "input_value",
+                    "name": "A"
+                  },
+                  {
+                    "type": "input_dummy",
+                    "name": "B"
+                  }
+                ],
+                "output": null,
+                "colour": 225
+              }
+                                  
+            );
+          }
+        };
+      Blockly.Blocks['remove']={
+        init:function(){
+            this.jsonInit(
+              {
+                "type": "remove",
+                "tooltip": "",
+                "helpUrl": "",
+                "message0": ".remove( %1 ) %2",
+                "args0": [
+                  {
+                    "type": "input_value",
+                    "name": "A"
+                  },
+                  {
+                    "type": "input_dummy",
+                    "name": "B"
+                  }
+                ],
+                "output": null,
+                "colour": 225
+              }
+            );
+          }
+        };
+      Blockly.Blocks['pop']={
+        init:function(){
+            this.jsonInit(
+              {
+                "type": "pop",
+                "tooltip": "",
+                "helpUrl": "",
+                "message0": ".pop( %1 ) %2",
+                "args0": [
+                  {
+                    "type": "input_value",
+                    "name": "A"
+                  },
+                  {
+                    "type": "input_dummy",
+                    "name": "B"
+                  }
+                ],
+                "output": null,
+                "colour": 225
+              }
+            );
+          }
+        };
+      Blockly.Blocks['clear']={
+        init:function(){
+            this.jsonInit(
+              {
+                "type": "clear",
+                "tooltip": "",
+                "helpUrl": "",
+                "message0": ".clear( %1 ) %2",
+                "args0": [
+                  {
+                    "type": "input_value",
+                    "name": "A"
+                  },
+                  {
+                    "type": "input_dummy",
+                    "name": "B"
+                  }
+                ],
+                "output": null,
+                "colour": 225
+              }
+            );
+          }
+        };  Blockly.Blocks['append']={
+          init:function(){
+              this.jsonInit(
+                {
+                  "type": "append",
+                  "tooltip": "",
+                  "helpUrl": "",
+                  "message0": ".append( %1 ) %2",
+                  "args0": [
+                    {
+                      "type": "input_value",
+                      "name": "A"
+                    },
+                    {
+                      "type": "input_dummy",
+                      "name": "B"
+                    }
+                  ],
+                  "output": null,
+                  "colour": 225
+                }
+                                    
+              );
+            }
+          };
+        Blockly.Blocks['remove']={
+          init:function(){
+              this.jsonInit(
+                {
+                  "type": "remove",
+                  "tooltip": "",
+                  "helpUrl": "",
+                  "message0": ".remove( %1 ) %2",
+                  "args0": [
+                    {
+                      "type": "input_value",
+                      "name": "A"
+                    },
+                    {
+                      "type": "input_dummy",
+                      "name": "B"
+                    }
+                  ],
+                  "output": null,
+                  "colour": 225
+                }
+              );
+            }
+          };
+        Blockly.Blocks['pop']={
+          init:function(){
+              this.jsonInit(
+                {
+                  "type": "pop",
+                  "tooltip": "",
+                  "helpUrl": "",
+                  "message0": ".pop( %1 ) %2",
+                  "args0": [
+                    {
+                      "type": "input_value",
+                      "name": "A"
+                    },
+                    {
+                      "type": "input_dummy",
+                      "name": "B"
+                    }
+                  ],
+                  "output": null,
+                  "colour": 225
+                }
+              );
+            }
+          };
+        Blockly.Blocks['clear']={
+          init:function(){
+              this.jsonInit(
+                {
+                  "type": "clear",
+                  "tooltip": "",
+                  "helpUrl": "",
+                  "message0": ".clear( %1 ) %2",
+                  "args0": [
+                    {
+                      "type": "input_value",
+                      "name": "A"
+                    },
+                    {
+                      "type": "input_dummy",
+                      "name": "B"
+                    }
+                  ],
+                  "output": null,
+                  "colour": 225
+                }
+              );
+            }
+          };  Blockly.Blocks['append']={
+            init:function(){
+                this.jsonInit(
+                  {
+                    "type": "append",
+                    "tooltip": "",
+                    "helpUrl": "",
+                    "message0": ".append( %1 ) %2",
+                    "args0": [
+                      {
+                        "type": "input_value",
+                        "name": "A"
+                      },
+                      {
+                        "type": "input_dummy",
+                        "name": "B"
+                      }
+                    ],
+                    "output": null,
+                    "colour": 225
+                  }
+                                      
+                );
+              }
+            };
+          Blockly.Blocks['remove']={
+            init:function(){
+                this.jsonInit(
+                  {
+                    "type": "remove",
+                    "tooltip": "",
+                    "helpUrl": "",
+                    "message0": ".remove( %1 ) %2",
+                    "args0": [
+                      {
+                        "type": "input_value",
+                        "name": "A"
+                      },
+                      {
+                        "type": "input_dummy",
+                        "name": "B"
+                      }
+                    ],
+                    "output": null,
+                    "colour": 225
+                  }
+                );
+              }
+            };
+          Blockly.Blocks['pop']={
+            init:function(){
+                this.jsonInit(
+                  {
+                    "type": "pop",
+                    "tooltip": "",
+                    "helpUrl": "",
+                    "message0": ".pop( %1 ) %2",
+                    "args0": [
+                      {
+                        "type": "input_value",
+                        "name": "A"
+                      },
+                      {
+                        "type": "input_dummy",
+                        "name": "B"
+                      }
+                    ],
+                    "output": null,
+                    "colour": 225
+                  }
+                );
+              }
+            };
+          Blockly.Blocks['clear']={
+            init:function(){
+                this.jsonInit(
+                  {
+                    "type": "clear",
+                    "tooltip": "",
+                    "helpUrl": "",
+                    "message0": ".clear( %1 ) %2",
+                    "args0": [
+                      {
+                        "type": "input_value",
+                        "name": "A"
+                      },
+                      {
+                        "type": "input_dummy",
+                        "name": "B"
+                      }
+                    ],
+                    "output": null,
+                    "colour": 225
+                  }
+                );
+              }
+            };  Blockly.Blocks['append']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "append",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".append( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+                              
+        );
+      }
+    };
+  Blockly.Blocks['remove']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "remove",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".remove( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['pop']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "pop",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".pop( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['clear']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "clear",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".clear( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['almighty']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "almighty",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "%1",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "NAME"
+              }
+            ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": 225
+          }
+                              
+        );
+      }
+    };
+  pythonGenerator.forBlock['if'] = function(block,generator) {
+    var value_if_main = generator.valueToCode(block, 'if_main', Order.ATOMIC);
+    var dropdown_if_dropdown = block.getFieldValue('if_dropdown');
+    var value_name = generator.valueToCode(block, 'NAME', Order.ATOMIC);
+    var statements_if_statement = generator.statementToCode(block, 'if_statement');
+    var operatorMap = {
+        'equal': '==',
+        'not_equal': '!=',
+        'less_then': '>',
+        'more_than': '<',
+        'below': '>=',
+        'avobe': '<='
+    };
+    var operator = operatorMap[dropdown_if_dropdown];
+    var code = `if ${value_if_main} ${operator} ${value_name}:\n${statements_if_statement}`;
+    return code;
+  };
 
+  pythonGenerator.forBlock['elif'] = function(block, generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
   
+    const dropdown_drop = block.getFieldValue('drop');
+
+    const value_b = generator.valueToCode(block, 'B', Order.ATOMIC);
+  
+    const statement_d = generator.statementToCode(block, 'D');
+    const operatorMap={
+      'equal': '==',
+      'not_equal': '!=',
+      'less_then': '>',
+      'more_than': '<',
+      'below': '>=',
+      'above': '<='
+    }
+    const operator = operatorMap[dropdown_drop];
+    const code =`elif ${value_a}${operator} ${value_b}:\n ${statement_d}`;
+    return code;
+  }
+  pythonGenerator.forBlock['else'] = function(block, generator) {
+    const statement_b = generator.statementToCode(block, 'B');
+  
+    // TODO: Assemble python into the code variable.
+    const code = `else:\n${statement_b}`;
+    return code;
+  }
+  pythonGenerator.forBlock['sum'] = function(block, generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `sum(${value_a})`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['max'] = function(block, generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `max(${value_a})`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['min'] = function(block, generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `min(${value_a})`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['sorted'] = function(block, generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `sorted(${value_a})`;
+    return [code, Order.ATOMIC];
+  }
   pythonGenerator.forBlock['print'] = function(block, generator) {
     var value_print = generator.valueToCode(block, 'Print', Order.ATOMIC);
     var code = `print(${value_print})\n`;
@@ -779,9 +2046,11 @@ Blockly.Blocks['while']={
   }
   pythonGenerator.forBlock['string'] = function(block, generator) {
     const text_string_text = block.getFieldValue('String_Text');
-    const code = `"${text_string_text}"`
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `"${text_string_text}"${value_a}`;
     return [code,Order.ATOMIC];
   };
+  
   pythonGenerator.forBlock['forvariavle'] = function(block,generator) {
     const text_name = block.getFieldValue('NAME');
     const value_name = generator.valueToCode(block, 'NAME', Order.ATOMIC);
@@ -807,8 +2076,8 @@ Blockly.Blocks['while']={
   }
   pythonGenerator.forBlock['int'] = function(block,generator) {
     const value_a = generator.valueToCode(block, 'a', Order.ATOMIC);
-    const code = `int(${value_a})\n`;
-    return code;
+    const code = `int(${value_a})`;
+    return [code, Order.ATOMIC];
   }
   pythonGenerator.forBlock['str'] = function(block,generator) {
     const value_a = generator.valueToCode(block, 'a', Order.ATOMIC);
@@ -845,8 +2114,8 @@ Blockly.Blocks['while']={
   }
   pythonGenerator.forBlock['range'] = function(block,generator) {
     const value_a = generator.valueToCode(block, 'a', Order.ATOMIC);
-    const code = `range(${value_a})\n`;
-    return code;
+    const code = `range(${value_a})`;
+    return [code, Order.ATOMIC];
   }
   pythonGenerator.forBlock['reversed'] = function(block,generator) {
     const value_a = generator.valueToCode(block, 'a', Order.ATOMIC);
@@ -870,16 +2139,90 @@ Blockly.Blocks['while']={
     const value_b = generator.valueToCode(block, 'B', Order.ATOMIC);
   
     const statement_c = generator.statementToCode(block, 'C');
-    const code = `for ${value_a}in ${value_b}:\n${statement_c}`;
+    const code = `for ${value_a} in ${value_b}:\n${statement_c}`;
     return code;
   }
   pythonGenerator.forBlock['while'] = function(block,generator) {
     const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
   
-    const statement_name = generator.statementToCode(block, 'NAME');
-    const code = `while ${value_a}:\n${statement_name}`;
+    const dropdown_drop = block.getFieldValue('drop');
+    const value_b = generator.valueToCode(block, 'B', Order.ATOMIC);
+    const statement_c = generator.statementToCode(block, 'C');
+    const operatorMap={
+      'equal': '==',
+      'not_equal': '!=',
+      'less_then': '>',
+      'more_than': '<',
+      'below': '>=',
+      'above': '<=',
+      'True':'True'
+    }
+    const operator = operatorMap[dropdown_drop];
+    // TODO: Assemble python into the code variable.
+    const code = `while ${value_a} ${operator} ${value_b}:\n${statement_c}`;
     return code;
   }
+  pythonGenerator.forBlock['def'] = function(block,generator) {
+    const text_name = block.getFieldValue('NAME');
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const statement_b = generator.statementToCode(block, 'B');
+  
+    // TODO: Assemble python into the code variable.
+    const code = `def ${text_name} (${value_a}):\n${statement_b}`;
+    return code;
+  }
+  pythonGenerator.forBlock['return'] = function(block,generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `return ${value_a}\n`;
+    return [code,Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['usedef'] = function(block,generator) {
+    const text_name = block.getFieldValue('name');
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `${text_name}(${value_a})`;
+    return code;
+  }
+  pythonGenerator.forBlock['usearray'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const value_b = generator.valueToCode(block, 'B', Order.ATOMIC);
+    const value_c = generator.valueToCode(block, 'C', Order.ATOMIC);
+    const code = `${value_a}[${value_b}]${value_c}`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['append'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `.append(${value_a})\n`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['remove'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `.remove(${value_a})\n`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['pop'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `.pop(${value_a})\n`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['claer'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `.clear(${value_a})\n`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['almighty'] = function(block,generator) {
+    const value_name = generator.valueToCode(block, 'NAME', Order.ATOMIC);
+    const code = `${value_name}`;
+    return code;
+  }
+  
   Blockly.Blocks['ifjp']={
     init:function(){
         this.jsonInit({
@@ -942,7 +2285,192 @@ Blockly.Blocks['while']={
           });
       }
   };
-
+  Blockly.Blocks['elifjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "elifjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "ではなく、もし %1 %2 %3 ならば以下を実行する %4 %5",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "field_dropdown",
+                "name": "drop",
+                "options": [
+                  [
+                    "==",
+                    "equal"
+                  ],
+                  [
+                    "!=",
+                    "not_equal"
+                  ],
+                  [
+                    ">",
+                    "less_then"
+                  ],
+                  [
+                    "<",
+                    "more_than"
+                  ],
+                  [
+                    ">=",
+                    "below"
+                  ],
+                  [
+                    "<=",
+                    "avobe"
+                  ]
+                ]
+              },
+              {
+                "type": "input_value",
+                "name": "B"
+              },
+              {
+                "type": "input_dummy",
+                "name": "C"
+              },
+              {
+                "type": "input_statement",
+                "name": "D"
+              }
+            ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": 330,
+            "inputsInline": true
+          }
+          );
+      }
+  };
+  Blockly.Blocks['elsejp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "elsejp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "それ以外なら %1 %2",
+            "args0": [
+              {
+                "type": "input_dummy",
+                "name": "A"
+              },
+              {
+                "type": "input_statement",
+                "name": "B"
+              }
+            ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": 330
+          }
+                              
+          );
+      }
+  };
+  Blockly.Blocks['sumjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "sumjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "合計( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }      
+        );
+      }
+  };
+  Blockly.Blocks['maxjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "maxjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "最大( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          } 
+        );
+      }
+  };
+  Blockly.Blocks['minjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "minjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "最小( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }   
+        );
+      }
+  };
+  Blockly.Blocks['sortedjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "sortedjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "並べ替え( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }   
+        );
+      }
+  };
   Blockly.Blocks['printjp']={
     init:function(){
         this.jsonInit(
@@ -1130,22 +2658,27 @@ Blockly.Blocks['while']={
   };
   Blockly.Blocks['stringjp']={
     init:function(){
-        this.jsonInit({
-          "type": "stringjp",
-          "message0": "\" %1 \"",
-          "args0": [
-            {
-              "type": "field_input",
-              "name": "String_Text",
-              "text": ""
-            }
-          ],
-          "inputsInline": true,
-          "output": "String",
-          "colour": 230,
-          "tooltip": "",
-          "helpUrl": ""
-        });
+        this.jsonInit(
+          {
+            "type": "stringjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "\" %1 \" %2",
+            "args0": [
+              {
+                "type": "field_input",
+                "name": "String_Text",
+                "text": " "
+              },
+              {
+                "type": "input_value",
+                "name": "A"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }        
+      );
       }
   };
   Blockly.Blocks['forvariavlejp']={
@@ -1259,7 +2792,7 @@ Blockly.Blocks['while']={
     init:function(){
       this.jsonInit(
         {
-          "type": "intjp",
+          "type": "int",
           "tooltip": "",
           "helpUrl": "",
           "message0": "整数型に変換する( %1 ) %2",
@@ -1273,10 +2806,10 @@ Blockly.Blocks['while']={
               "name": "b"
             }
           ],
-          "previousStatement": null,
-          "nextStatement": null,
+          "output": null,
           "colour": 225
         }
+                            
       );
     }
   };
@@ -1569,29 +3102,290 @@ Blockly.Blocks['while']={
           "type": "whilejp",
           "tooltip": "",
           "helpUrl": "",
-          "message0": "%1 の間以下を繰り返す %2 %3",
+          "message0": "%1 %2 %3 %4 %5 %6",
           "args0": [
             {
               "type": "input_value",
               "name": "A"
             },
             {
+              "type": "field_dropdown",
+              "name": "drop",
+              "options": [
+                [
+                  "==",
+                  "equal"
+                ],
+                [
+                  "!=",
+                  "not_equal"
+                ],
+                [
+                  ">",
+                  "less_then"
+                ],
+                [
+                  "<",
+                  "more_than"
+                ],
+                [
+                  ">=",
+                  "below"
+                ],
+                [
+                  "<=",
+                  "avobe"
+                ],
+                [
+                  "真",
+                  "True"
+                ]
+              ]
+            },
+            {
+              "type": "input_value",
+              "name": "B"
+            },
+            {
+              "type": "field_label_serializable",
+              "text": "の間以下を繰り返す",
+              "name": "a"
+            },
+            {
               "type": "input_dummy",
-              "name": "c"
+              "name": "NAME"
             },
             {
               "type": "input_statement",
-              "name": "NAME"
+              "name": "C"
             }
           ],
           "previousStatement": null,
           "nextStatement": null,
           "colour": 225,
           "inputsInline": true
-        }      
+        }
+                            
       );
     }
   };
+  Blockly.Blocks['defjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "def",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "自作関数 %1 ( %2 ): %3 %4",
+            "args0": [
+              {
+                "type": "field_input",
+                "name": "NAME",
+                "text": ""
+              },
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "NAME"
+              },
+              {
+                "type": "input_statement",
+                "name": "B"
+              }
+            ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": 225
+          }
+                              
+        );
+      }
+    };
+  Blockly.Blocks['returnjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "return",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "出力 %1 %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": 225
+          }
+                              
+        );
+      }
+    };
+  Blockly.Blocks['usedefjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "usedefjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "%1 ( %2 ) %3",
+            "args0": [
+              {
+                "type": "field_input",
+                "name": "name",
+                "text": ""
+              },
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+                                                
+        );
+      }
+    };
+  Blockly.Blocks['usearrayjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "usearrayjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": "%1 [ %2 ] %3",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_value",
+                "name": "B"
+              },
+              {
+                "type": "input_value",
+                "name": "C"
+              }
+            ],
+            "output": null,
+            "colour": 225,
+            "inputsInline": true
+          }                                  
+        );
+      }
+    };
+  Blockly.Blocks['appendjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "appendjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".追加( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+                              
+        );
+      }
+    };
+  Blockly.Blocks['removejp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "removejp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".削除( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['popjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "popjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".排出( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
+  Blockly.Blocks['clearjp']={
+    init:function(){
+        this.jsonInit(
+          {
+            "type": "clearjp",
+            "tooltip": "",
+            "helpUrl": "",
+            "message0": ".消去( %1 ) %2",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "A"
+              },
+              {
+                "type": "input_dummy",
+                "name": "B"
+              }
+            ],
+            "output": null,
+            "colour": 225
+          }
+        );
+      }
+    };
   pythonGenerator.forBlock['ifjp'] = function(block,generator) {
     var value_if_main = generator.valueToCode(block, 'if_main', Order.ATOMIC);
     var dropdown_if_dropdown = block.getFieldValue('if_dropdown');
@@ -1609,8 +3403,69 @@ Blockly.Blocks['while']={
     var code = `if ${value_if_main} ${operator} ${value_name}:\n${statements_if_statement}`;
     return code;
   };
+  pythonGenerator.forBlock['elifjp'] = function(block, generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+    const dropdown_drop = block.getFieldValue('drop');
 
-
+    const value_b = generator.valueToCode(block, 'B', Order.ATOMIC);
+  
+    const statement_d = generator.statementToCode(block, 'D');
+    const operatorMap={
+      'equal': '==',
+      'not_equal': '!=',
+      'less_then': '>',
+      'more_than': '<',
+      'below': '>=',
+      'above': '<='
+    }
+    const operator = operatorMap[dropdown_drop];
+    const code =`elif ${value_a}${operator} ${value_b}:\n ${statement_d}`;
+    return code;
+  }
+  pythonGenerator.forBlock['elsejp'] = function(block, generator) {
+    const statement_b = generator.statementToCode(block, 'B');
+  
+    // TODO: Assemble python into the code variable.
+    const code = `それ以外なら:\n${statement_b}`;
+    return code;
+  }
+  pythonGenerator.forBlock['sumjp'] = function(block, generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `sum(${value_a})`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['maxjp'] = function(block, generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `max(${value_a})`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['minjp'] = function(block, generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `min(${value_a})`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['sorted'] = function(block, generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `sorted(${value_a})`;
+    return [code, Order.ATOMIC];
+  }
   pythonGenerator.forBlock['printjp'] = function(block, generator) {
   var value_print = generator.valueToCode(block, 'Print', Order.ATOMIC);
   var code = `print(${value_print})\n`;
@@ -1662,7 +3517,8 @@ Blockly.Blocks['while']={
   }
   pythonGenerator.forBlock['stringjp'] = function(block, generator) {
   const text_string_text = block.getFieldValue('String_Text');
-  const code = `"${text_string_text}"`
+  const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  const code = `"${text_string_text}"${value_a}`;
   return [code,Order.ATOMIC];
   };
   pythonGenerator.forBlock['forvariavlejp'] = function(block,generator) {
@@ -1689,9 +3545,9 @@ Blockly.Blocks['while']={
   return code;
   }
   pythonGenerator.forBlock['intjp'] = function(block,generator) {
-  const value_a = generator.valueToCode(block, 'a', Order.ATOMIC);
-  const code = `int(${value_a})\n`;
-  return code;
+    const value_a = generator.valueToCode(block, 'a', Order.ATOMIC);
+    const code = `int(${value_a})`;
+    return [code, Order.ATOMIC];
   }
   pythonGenerator.forBlock['strjp'] = function(block,generator) {
   const value_a = generator.valueToCode(block, 'a', Order.ATOMIC);
@@ -1728,8 +3584,8 @@ Blockly.Blocks['while']={
   }
   pythonGenerator.forBlock['rangejp'] = function(block,generator) {
   const value_a = generator.valueToCode(block, 'a', Order.ATOMIC);
-  const code = `range(${value_a})\n`;
-  return code;
+  const code = `range(${value_a})`;
+  return [code, Order.ATOMIC];
   }
   pythonGenerator.forBlock['reversedjp'] = function(block,generator) {
   const value_a = generator.valueToCode(block, 'a', Order.ATOMIC);
@@ -1753,16 +3609,81 @@ Blockly.Blocks['while']={
   const value_b = generator.valueToCode(block, 'B', Order.ATOMIC);
 
   const statement_c = generator.statementToCode(block, 'C');
-  const code = `for ${value_a}in ${value_b}:\n${statement_c}`;
+  const code = `for ${value_a} in ${value_b}:\n${statement_c}`;
   return code;
   }
   pythonGenerator.forBlock['whilejp'] = function(block,generator) {
-  const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
-
-  const statement_name = generator.statementToCode(block, 'NAME');
-  const code = `while ${value_a}:\n${statement_name}`;
-  return code;
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const dropdown_drop = block.getFieldValue('drop');
+    const value_b = generator.valueToCode(block, 'B', Order.ATOMIC);
+    const statement_c = generator.statementToCode(block, 'C');
+    const operatorMap={
+      'equal': '==',
+      'not_equal': '!=',
+      'less_then': '>',
+      'more_than': '<',
+      'below': '>=',
+      'above': '<=',
+      'True':'True',
+    }
+    const operator = operatorMap[dropdown_drop];
+    // TODO: Assemble python into the code variable.
+    const code = `while ${value_a} ${operator} ${value_b}:\n${statement_c}`;
+    return code;
   }
+  pythonGenerator.forBlock['defjp'] = function(block,generator) {
+    const text_name = block.getFieldValue('NAME');
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const statement_b = generator.statementToCode(block, 'B');
+  
+    // TODO: Assemble python into the code variable.
+    const code = `def ${text_name} (${value_a}):\n${statement_b}`;
+    return code;
+  }
+  pythonGenerator.forBlock['returnjp'] = function(block,generator) {
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `return ${value_a}\n`;
+    return code;
+  }
+  pythonGenerator.forBlock['usedefjp'] = function(block,generator) {
+    const text_name = block.getFieldValue('name');
+    // TODO: change Order.ATOMIC to the correct operator precedence strength
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+  
+  
+    // TODO: Assemble python into the code variable.
+    const code = `${text_name}(${value_a})`;
+    return [code,Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['usearrayjp'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const value_b = generator.valueToCode(block, 'B', Order.ATOMIC);
+    const value_c = generator.valueToCode(block, 'C', Order.ATOMIC);
+    const code = `${value_a}[${value_b}]${value_c}`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['appendjp'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `.append(${value_a})\n`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['removejp'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `.remove(${value_a})\n`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['popjp'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `.pop(${value_a})\n`;
+    return [code, Order.ATOMIC];
+  }
+  pythonGenerator.forBlock['claerjp'] = function(block,generator) {
+    const value_a = generator.valueToCode(block, 'A', Order.ATOMIC);
+    const code = `.clear(${value_a})\n`;
+    return [code, Order.ATOMIC];
+  }
+  
 }
 
 

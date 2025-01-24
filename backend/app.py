@@ -49,7 +49,7 @@ def protected():
 @jwt_required()
 def save_progress():
     data = request.get_json()
-    user_info = get_jwt_identity()  # トークンからユーザー情報を取得
+    user_info = get_jwt_identity() 
     progress = data.get('progress')
     
     user = User.query.get(user_info['id'])
@@ -62,7 +62,7 @@ def save_progress():
 @app.route('/getprogress', methods=['GET'])
 @jwt_required()
 def getprogress():
-    user_info = get_jwt_identity()  # トークンからユーザー情報を取得
+    user_info = get_jwt_identity() 
     print(user_info)
     user = User.query.get(user_info['id'])
     print(user)

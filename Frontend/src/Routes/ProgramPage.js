@@ -214,8 +214,8 @@ results
             inputProps={{
               readOnly: true,
               style:{
-                overflowWrap:'anywhere',
-                whiteSpace:'pre-line',
+                overflowWrap: 'break-word',
+                whiteSpace:'pre-wrap',
                 color:"#000000",
             }
             }}

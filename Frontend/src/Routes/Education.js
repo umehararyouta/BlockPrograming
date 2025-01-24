@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate,useLocation } from 'react-router-dom';
-import React, { useState,useEffect } from  'react';
+import React, { useState,useEffect,useRef } from  'react';
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
@@ -14,12 +14,24 @@ function Education() {
     const [activeindex,setActiveindex] = useState(0);
     const navigate = useNavigate();
     const location = useLocation();
+    const swiperRef = useRef(null);
 
     const image = {
-      // '1':['./img/',''],
-      '1':['/img/1/1.jpg','/img/1/2.jpg','/img/1/3.jpg','/img/1/4.jpg','/img/1/5.jpg','/img/1/6.jpg','/img/1/7.jpg'],
-      '2':['/img/2/1.jpg','/img/2/2.jpg','/img/2/3.jpg','/img/2/4.jpg','/img/2/5.jpg','/img/2/6.jpg','/img/2/7.jpg'],
-
+      '1':['/img/1/1 はじめに_01.jpeg','/img/1/1 はじめに_02.jpeg','/img/1/1 はじめに_03.jpeg','/img/1/1 はじめに_04.jpeg','/img/1/1 はじめに_05.jpeg','/img/1/1 はじめに_06.jpeg',],
+      '2':['/img/2/2 Pythonについて_01.jpeg','/img/2/2 Pythonについて_02.jpeg','/img/2/2 Pythonについて_03.jpeg','/img/2/2 Pythonについて_04.jpeg','/img/2/2 Pythonについて_05.jpeg','/img/2/2 Pythonについて_06.jpeg','/img/2/2 Pythonについて_07.jpeg','/img/2/2 Pythonについて_08.jpeg','/img/2/2 Pythonについて_09.jpeg',],
+      '3':['/img/3/3 入力と出力_01.jpeg','/img/3/3 入力と出力_02.jpeg','/img/3/3 入力と出力_03.jpeg','/img/3/3 入力と出力_04.jpeg','/img/3/3 入力と出力_05.jpeg','/img/3/3 入力と出力_06.jpeg',],
+      '4':['/img/5/5 変数と代入_01.jpeg','/img/5/5 変数と代入_02.jpeg','/img/5/5 変数と代入_03.jpeg','/img/5/5 変数と代入_04.jpeg','/img/5/5 変数と代入_05.jpeg','/img/5/5 変数と代入_06.jpeg',],
+      '5':['/img/7/7 プログラムと計算_01.jpeg','/img/7/7 プログラムと計算_02.jpeg','/img/7/7 プログラムと計算_03.jpeg','/img/7/7 プログラムと計算_04.jpeg','/img/7/7 プログラムと計算_05.jpeg','/img/7/7 プログラムと計算_06.jpeg',],
+      '6':[],
+      '7':[],
+      '8':[],
+      '9':[],
+      '10':[],
+      '11':[],
+      '12':[],
+      '13':[],
+      '14':[],
+      '15':[],
     }
     const images = image[queryid] || [];
 
@@ -44,6 +56,9 @@ function Education() {
       }catch(error){
         console.log(error);
       }
+      if (swiperRef.current) {
+        swiperRef.current.slideTo(0);
+    }
       navigate(`/education?id=${Number(queryid)+1}`)
     }
 
@@ -61,6 +76,7 @@ function Education() {
         pagination={{ clickable: true }}
         style={{ textAlign: "center"}}
         onSlideChange={onSlideChange}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         >
           {images.map((image, index) => (
             <SwiperSlide key={index}>
